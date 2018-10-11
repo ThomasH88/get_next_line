@@ -6,12 +6,11 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 19:39:41 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/10 21:12:01 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/10 22:26:11 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>//askjfljf
 
 char	*str_concat(char *prev, char *buf, ssize_t n)
 {
@@ -23,7 +22,6 @@ char	*str_concat(char *prev, char *buf, ssize_t n)
 		j = ft_strlen(prev);
 	else
 		j = 0;
-	printf("malloc = %ld\n", j + n + 1);
 	new = (char *)malloc(sizeof(char) * (j + n + 1));
 	if (!new)
 		return (NULL);
@@ -44,37 +42,28 @@ char	*str_concat(char *prev, char *buf, ssize_t n)
 int		get_next_line(const int fd, char **line)
 {
 	char			*buf;
-	ssize_t			br;	
+	ssize_t			br;
 	char			*file;
 	static char		**arr;
 
 	if (arr == NULL)
 	{
-		buf = (char *)malloc(sizeof(char) * BUFF_SIZE + 1);
-		if (!buf)
+		if (!(buf = (char *)malloc(sizeof(char) * BUFF_SIZE + 1)))
 			return (-1);
 		file = NULL;
-		ft_strclr(buf);
 		while ((br = read(fd, buf, BUFF_SIZE)))
 		{
-			//printf("bytes read = %ld\n", br);
-			//printf("buf before clear = %s\n", buf);
 			if (br == -1)
 				return (-1);
 			file = str_concat(file, buf, br);
-			ft_strclr(buf);
-			//printf("buf after clear = %s\n", buf);
-			//printf("file progress = %s\n\n", file);
 		}
-		ft_strdel(&buf);
-		//printf("file complete = %s\n", file);
 		arr = ft_strsplit((char const *)file, '\n');
+		ft_strdel(&buf);
 		ft_strdel(&file);
 	}
-	*line = *arr;
-	if (*line == NULL)
+	if (*arr == NULL)
 		return (0);
+	*line = *arr;
 	(void)*(arr)++;
-	//printf("line = %s\n", *line);
 	return (1);
 }
