@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 19:39:41 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/11 12:02:26 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/11 12:38:10 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,8 @@ int		get_next_line(const int fd, char **line)
 		if (!(buf = (char *)malloc(sizeof(char) * BUFF_SIZE + 1)))
 			return (-1);
 		file = NULL;
-		br = read(fd, buf, BUFF_SIZE);
 		//printf("buf = %s\n", buf);
 		//printf("bytes read = %ld\n", br);
-		file = str_concat(file, buf, br);
 		//printf("file prog = %s\n", file);
 		while ((br = read(fd, buf, BUFF_SIZE)))
 		{
