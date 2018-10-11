@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 19:39:41 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/10 22:26:11 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/10 22:36:05 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int		get_next_line(const int fd, char **line)
 	char			*file;
 	static char		**arr;
 
+	if (!line)
+		return (-1);
 	if (arr == NULL)
 	{
 		if (!(buf = (char *)malloc(sizeof(char) * BUFF_SIZE + 1)))
