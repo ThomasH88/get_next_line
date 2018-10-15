@@ -6,7 +6,7 @@
 #    By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 16:42:11 by tholzheu          #+#    #+#              #
-#    Updated: 2018/10/10 19:36:41 by tholzheu         ###   ########.fr        #
+#    Updated: 2018/10/15 15:23:11 by tholzheu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,17 +68,15 @@ SRCS = ./ft_memset.c \
 ./ft_putstr_fd.c \
 ./ft_putendl_fd.c \
 ./ft_putnbr_fd.c \
-./ft_lstnew.c \
-./ft_lstdelone.c \
-./ft_lstdel.c \
-./ft_lstadd.c \
-./ft_lstiter.c \
-./ft_lstmap.c \
-./count_words.c \
+./lstnew.c \
+./lstdel.c \
+./lstadd_front.c \
+./itoa_base.c \
 ./len_n_word.c \
-./ft_lstadd_back.c \
 ./size_of_nb.c \
-./itoa_base.c
+./lstadd_back.c \
+./lstprint.c \
+./count_words.c
 
 SRCO = $(SRCS:%.c=%.o)
 

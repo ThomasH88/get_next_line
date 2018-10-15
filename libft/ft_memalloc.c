@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 11:53:18 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/02 22:00:16 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/15 13:39:53 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	*ft_memalloc(size_t size)
 
 	if (!(ptr = (void *)malloc(size)))
 		return (NULL);
-	ft_strclr((char *)ptr);
+	ft_memchr((const void *)ptr, '\0', size);
 	return (ptr);
 }

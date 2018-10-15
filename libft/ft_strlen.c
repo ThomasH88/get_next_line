@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/10 19:39:28 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/02 22:32:45 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/15 15:43:52 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t		ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (s[i])
+	while (s && s[i])
 	{
 		i++;
 	}

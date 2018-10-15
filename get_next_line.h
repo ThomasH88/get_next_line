@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 19:26:14 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/10 20:56:24 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/15 14:35:36 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@
 # define BUFF_SIZE 32
 
 int		get_next_line(const int fd, char **line);
-char	*str_concat(char *prev, char *buf, ssize_t n);
 
 #endif

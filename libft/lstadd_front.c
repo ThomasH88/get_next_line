@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   lstadd_front.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/08 21:24:09 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/08 21:49:52 by tholzheu         ###   ########.fr       */
+/*   Created: 2018/10/15 13:54:25 by tholzheu          #+#    #+#             */
+/*   Updated: 2018/10/15 14:10:12 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+void	lstadd_front(t_list **head, char *data)
 {
 	t_list	*tmp;
+	t_list	*new;
 
-	if (!alst)
+	if (!head)
 		return ;
-	if (!*alst)
-		*alst = new;
+	new = lstnew(data);
+	if (!*head)
+		*head = new;
 	else
 	{
 		tmp = new;
-		tmp->next = *alst;
-		new = *alst;
-		*alst = tmp;
+		tmp->next = *head;
+		new = *head;
+		*head = tmp;
 	}
 }

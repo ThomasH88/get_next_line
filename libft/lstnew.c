@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   lstnew.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/08 21:34:09 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/10 22:27:26 by tholzheu         ###   ########.fr       */
+/*   Created: 2018/10/15 13:47:25 by tholzheu          #+#    #+#             */
+/*   Updated: 2018/10/15 13:47:51 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list	*lstnew(char *s)
 {
-	t_list	*current;
-	t_list	*new;
+	t_list			*new;
 
-	if (!lst)
+	if ((new = (t_list *)malloc(sizeof(t_list))) == NULL)
 		return (NULL);
-	current = lst;
-	new = NULL;
-	while (current)
-	{
-		ft_lstadd_back(&new, f(current));
-		current = current->next;
-	}
+	new->data = s;
+	new->next = NULL;
 	return (new);
 }
