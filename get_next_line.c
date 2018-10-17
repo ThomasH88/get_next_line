@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/17 14:31:49 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/17 15:45:19 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,15 @@ int		get_next_line(const int fd, char **line)
 {
 	ssize_t			br;
 	char			buff[BUFF_SIZE];
-	static char		*rest[256] = {NULL};
+	static char		*rest[4000] = {NULL};
 
-	if (fd < 0)
+	if ((fd < 0 || fd > 3998) && (*line = NULL))
 		return (-1);
 	if (!rest[fd] || ft_strchr(rest[fd], '\n') == NULL)
 	{
 		while ((br = read(fd, buff, BUFF_SIZE)))
 		{
-			if (br == -1)
+			if (br == -1 && (*line = NULL))
 				return (-1);
 			rest[fd] = str_concat(rest[fd], buff, br);
 			if (return_line(&rest[fd], line, 0))
