@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/17 14:04:49 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/17 14:08:01 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,29 @@ void	remove_last_new_line(char **rest)
 	j = 0;
 	if (!rest || !*rest)
 		return ;
-	while (rest[fd][0][j])
+	while (rest[0][j])
 		j++;
 	if (rest[0][j - 1] == '\n')
 		rest[0][j - 1] = '\0';
 }
 
-int		return_line(char ***rest, char **line, int i)
+int		return_line(char **rest, char **line, int i)
 {
 	char	*tmp;
 	char	*new;
 
 	if (i)
-		remove_last_new_line(*rest);
-	if (!**rest || (tmp = ft_strchr(**rest, '\n')) == NULL)
+		remove_last_new_line(rest);
+	if (!*rest || (tmp = ft_strchr(*rest, '\n')) == NULL)
 		return (0);
 	*tmp = '\0';
-	*line = ft_strdup(**rest);
+	*line = ft_strdup(*rest);
 	*tmp = '\n';
-	new = **rest;
+	new = *rest;
 	if (tmp + 1 && *(tmp + 1) != '\0')
-		**rest = ft_strdup(tmp + 1);
+		*rest = ft_strdup(tmp + 1);
 	else
-		**rest = NULL;
+		*rest = NULL;
 	ft_strdel(&new);
 	return (1);
 }
