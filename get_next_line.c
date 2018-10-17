@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/16 21:06:20 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/16 21:32:04 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,11 +87,11 @@ int		get_next_line(const int fd, char **line)
 		return (1);
 	}
 	//printf("2rest = %s\n", rest);
-	if (rest)
-	{
-		*line = rest;
-		rest = NULL;
-		return (1);
-	}
+	//if (rest)
+	//{
+	*line = rest;
+		//rest = NULL;
+	//	return (1);
+	//}
 	return (0);
 }
