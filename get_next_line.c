@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/17 11:26:00 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/17 12:01:55 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	remove_last_new_line(char **rest)
 	int		j;
 
 	j = 0;
+	//printf("xrest = %s\n", *rest);
 	if (!rest || !*rest)
 		return ;
 	while (rest[0][j])
@@ -56,9 +57,13 @@ int		return_line(char **rest, char **line, int i)
 {
 	char	*tmp;
 
+	//printf("restt = %s\n", *rest);
 	//printf("\n\nreturn_line...\n");
 	if (i)
+	{
+		//printf("yep\n");
 		remove_last_new_line(rest);
+	}
 	if (!*rest || (tmp = ft_strchr(*rest, '\n')) == NULL)
 	{
 		//printf("kksjdkfljs\n");
@@ -67,7 +72,7 @@ int		return_line(char **rest, char **line, int i)
 	*tmp = '\0';
 	*line = ft_strdup(*rest);
 	*tmp = '\n';
-	if (tmp + 1 && *(tmp + 1) != '\n' && *(tmp + 1) != '\0')
+	if (tmp + 1 && *(tmp + 1) != '\0')
 		*rest = tmp + 1;
 	else
 		*rest = NULL;
