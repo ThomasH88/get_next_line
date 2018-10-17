@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 19:26:14 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/15 14:35:36 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/16 17:37:15 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>//remove
 # include "libft/libft.h"
 # define BUFF_SIZE 32
 
