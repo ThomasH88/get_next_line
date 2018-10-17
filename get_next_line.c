@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/16 20:32:42 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/16 20:37:39 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int		get_next_line(const int fd, char **line)
 	ssize_t			br;
 	char			*buff;
 	static char		*rest;
-	char			*del;
 
 	if (!rest || ft_strchr(rest, '\n') == NULL)
 	{
