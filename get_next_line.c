@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/16 21:32:04 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/17 11:17:49 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,26 @@ char	*str_concat(char *prev, char *buf, ssize_t n)
 	return (new);
 }
 
-int		return_line(char **rest, char **line)
+void	remove_last_new_line(char **rest)
+{
+	int		j;
+
+	j = 0;
+	if (!rest || !*rest)
+		return ;
+	while (rest[0][j])
+		j++;
+	if (rest[0][j - 1] == '\n')
+		rest[0][j - 1] = '\0';
+}
+
+int		return_line(char **rest, char **line, int i)
 {
 	char	*tmp;
 
 	//printf("\n\nreturn_line...\n");
+	if (i)
+		remove_last_new_line(rest);
 	if (!*rest || (tmp = ft_strchr(*rest, '\n')) == NULL)
 	{
 		//printf("kksjdkfljs\n");
@@ -77,21 +92,21 @@ int		get_next_line(const int fd, char **line)
 			//printf("stuck here\n");
 			//printf("rest = %s\n", rest);
 			rest = str_concat(rest, buff, br);
-			if (return_line(&rest, line))
+			if (return_line(&rest, line, 0))
 				return (1);
 		}
 	}
-	if (return_line(&rest, line))
+	if (return_line(&rest, line, 1))
 	{
 		//printf("I'm herre\n");
 		return (1);
 	}
 	//printf("2rest = %s\n", rest);
-	//if (rest)
-	//{
-	*line = rest;
-		//rest = NULL;
-	//	return (1);
-	//}
+	if (rest)
+	{
+		*line = rest;
+		rest = NULL;
+		return (1);
+	}
 	return (0);
 }
