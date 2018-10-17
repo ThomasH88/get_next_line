@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/17 12:33:34 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/17 12:43:29 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ int		get_next_line(const int fd, char **line)
 
 	if (!rest || ft_strchr(rest, '\n') == NULL)
 	{
-		//buff = (char *)malloc(sizeof(char) * (BUFF_SIZE + 1));
-		while ((br = read(fd, buff, BUFF_SIZE)))//error handling
+		while ((br = read(fd, buff, BUFF_SIZE)))
 		{
 			if (br == -1)
 				return (-1);
@@ -90,7 +89,6 @@ int		get_next_line(const int fd, char **line)
 			if (return_line(&rest, line, 0))
 				return (1);
 		}
-		//ft_strdel(&buff);
 	}
 	if (return_line(&rest, line, 1))
 		return (1);
