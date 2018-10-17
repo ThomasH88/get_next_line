@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/17 11:17:49 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/17 11:26:00 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		return_line(char **rest, char **line, int i)
 	*tmp = '\0';
 	*line = ft_strdup(*rest);
 	*tmp = '\n';
-	if (tmp + 1 && *(tmp + 1) != '\n')
+	if (tmp + 1 && *(tmp + 1) != '\n' && *(tmp + 1) != '\0')
 		*rest = tmp + 1;
 	else
 		*rest = NULL;
