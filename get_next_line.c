@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/17 12:51:39 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/17 14:04:49 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,36 +39,36 @@ char	*str_concat(char *prev, char *buf, ssize_t n)
 	return (new);
 }
 
-void	remove_last_new_line(char **rest[fd])
+void	remove_last_new_line(char **rest)
 {
 	int		j;
 
 	j = 0;
-	if (!rest[fd] || !*rest[fd])
+	if (!rest || !*rest)
 		return ;
 	while (rest[fd][0][j])
 		j++;
-	if (rest[fd][0][j - 1] == '\n')
-		rest[fd][0][j - 1] = '\0';
+	if (rest[0][j - 1] == '\n')
+		rest[0][j - 1] = '\0';
 }
 
-int		return_line(char **rest[fd], char **line, int i)
+int		return_line(char ***rest, char **line, int i)
 {
 	char	*tmp;
 	char	*new;
 
 	if (i)
-		remove_last_new_line(rest[fd]);
-	if (!*rest[fd] || (tmp = ft_strchr(*rest[fd], '\n')) == NULL)
+		remove_last_new_line(*rest);
+	if (!**rest || (tmp = ft_strchr(**rest, '\n')) == NULL)
 		return (0);
 	*tmp = '\0';
-	*line = ft_strdup(*rest[fd]);
+	*line = ft_strdup(**rest);
 	*tmp = '\n';
-	new = *rest[fd];
+	new = **rest;
 	if (tmp + 1 && *(tmp + 1) != '\0')
-		*rest[fd] = ft_strdup(tmp + 1);
+		**rest = ft_strdup(tmp + 1);
 	else
-		*rest[fd] = NULL;
+		**rest = NULL;
 	ft_strdel(&new);
 	return (1);
 }
