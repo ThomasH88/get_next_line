@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/17 14:29:48 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/17 14:31:49 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int		return_line(char **rest, char **line, int i)
 
 int		return_last_line(char **line, char **rest)
 {
-	*line = rest[fd];
-	rest[fd] = NULL;
+	*line = *rest;
+	*rest = NULL;
 	return (1);
 }
 
