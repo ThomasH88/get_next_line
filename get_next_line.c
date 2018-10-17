@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/17 12:43:29 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/17 12:51:39 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,36 +39,36 @@ char	*str_concat(char *prev, char *buf, ssize_t n)
 	return (new);
 }
 
-void	remove_last_new_line(char **rest)
+void	remove_last_new_line(char **rest[fd])
 {
 	int		j;
 
 	j = 0;
-	if (!rest || !*rest)
+	if (!rest[fd] || !*rest[fd])
 		return ;
-	while (rest[0][j])
+	while (rest[fd][0][j])
 		j++;
-	if (rest[0][j - 1] == '\n')
-		rest[0][j - 1] = '\0';
+	if (rest[fd][0][j - 1] == '\n')
+		rest[fd][0][j - 1] = '\0';
 }
 
-int		return_line(char **rest, char **line, int i)
+int		return_line(char **rest[fd], char **line, int i)
 {
 	char	*tmp;
 	char	*new;
 
 	if (i)
-		remove_last_new_line(rest);
-	if (!*rest || (tmp = ft_strchr(*rest, '\n')) == NULL)
+		remove_last_new_line(rest[fd]);
+	if (!*rest[fd] || (tmp = ft_strchr(*rest[fd], '\n')) == NULL)
 		return (0);
 	*tmp = '\0';
-	*line = ft_strdup(*rest);
+	*line = ft_strdup(*rest[fd]);
 	*tmp = '\n';
-	new = *rest;
+	new = *rest[fd];
 	if (tmp + 1 && *(tmp + 1) != '\0')
-		*rest = ft_strdup(tmp + 1);
+		*rest[fd] = ft_strdup(tmp + 1);
 	else
-		*rest = NULL;
+		*rest[fd] = NULL;
 	ft_strdel(&new);
 	return (1);
 }
@@ -77,25 +77,25 @@ int		get_next_line(const int fd, char **line)
 {
 	ssize_t			br;
 	char			buff[BUFF_SIZE];
-	static char		*rest;
+	static char		*rest[256] = {NULL};
 
-	if (!rest || ft_strchr(rest, '\n') == NULL)
+	if (!rest[fd] || ft_strchr(rest[fd], '\n') == NULL)
 	{
 		while ((br = read(fd, buff, BUFF_SIZE)))
 		{
 			if (br == -1)
 				return (-1);
-			rest = str_concat(rest, buff, br);
-			if (return_line(&rest, line, 0))
+			rest[fd] = str_concat(rest[fd], buff, br);
+			if (return_line(&rest[fd], line, 0))
 				return (1);
 		}
 	}
-	if (return_line(&rest, line, 1))
+	if (return_line(&rest[fd], line, 1))
 		return (1);
-	if (rest)
+	if (rest[fd])
 	{
-		*line = rest;
-		rest = NULL;
+		*line = rest[fd];
+		rest[fd] = NULL;
 		return (1);
 	}
 	return (0);
