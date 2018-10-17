@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/17 12:11:12 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/17 12:13:36 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*str_concat(char *prev, char *buf, ssize_t n)
 	while ((--n) >= 0)
 		new[i++] = buf[j++];
 	new[i] = '\0';
-	ft_strdel(&prev);
+	//ft_strdel(&prev);
 	return (new);
 }
 
