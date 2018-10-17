@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/17 12:01:55 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/10/17 12:05:16 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	remove_last_new_line(char **rest)
 	int		j;
 
 	j = 0;
-	//printf("xrest = %s\n", *rest);
 	if (!rest || !*rest)
 		return ;
 	while (rest[0][j])
@@ -57,18 +56,10 @@ int		return_line(char **rest, char **line, int i)
 {
 	char	*tmp;
 
-	//printf("restt = %s\n", *rest);
-	//printf("\n\nreturn_line...\n");
 	if (i)
-	{
-		//printf("yep\n");
 		remove_last_new_line(rest);
-	}
 	if (!*rest || (tmp = ft_strchr(*rest, '\n')) == NULL)
-	{
-		//printf("kksjdkfljs\n");
 		return (0);
-	}
 	*tmp = '\0';
 	*line = ft_strdup(*rest);
 	*tmp = '\n';
@@ -76,8 +67,6 @@ int		return_line(char **rest, char **line, int i)
 		*rest = tmp + 1;
 	else
 		*rest = NULL;
-	//printf("line1 = %s\n", *line);
-	//printf("restk = %s\n", *rest);
 	return (1);
 }
 
@@ -94,19 +83,14 @@ int		get_next_line(const int fd, char **line)
 		{
 			if (br == -1)
 				return (-1);
-			//printf("stuck here\n");
-			//printf("rest = %s\n", rest);
 			rest = str_concat(rest, buff, br);
 			if (return_line(&rest, line, 0))
 				return (1);
 		}
+		ft_strdel(&buff);
 	}
 	if (return_line(&rest, line, 1))
-	{
-		//printf("I'm herre\n");
 		return (1);
-	}
-	//printf("2rest = %s\n", rest);
 	if (rest)
 	{
 		*line = rest;
