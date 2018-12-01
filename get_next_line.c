@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/15 19:54:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/18 18:56:09 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/12/01 03:50:33 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		get_next_line(const int fd, char **line)
 	char			buff[BUFF_SIZE];
 	static char		*rest[4000] = {NULL};
 
-	if ((fd < 0 || fd > 3998))
+	if ((fd < 0 || fd > 3998) || line == NULL)
 		return (-1);
 	if (!rest[fd] || ft_strchr(rest[fd], '\n') == NULL)
 	{
